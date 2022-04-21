@@ -11,3 +11,9 @@ Calculator provides simple and advanced mathematical functions in a beautifully 
 • Perform an algorithm for calculating complex mathematical formulas, based on the sorting station algorithm.
 
 • Cool neumorphism design.
+<img src="https://user-images.githubusercontent.com/92873911/164435759-e673440f-7c29-49ab-b251-403100d36082.png" width="600" height="270">
+<img src="https://user-images.githubusercontent.com/92873911/164435949-d4a6f6d1-4f1b-43c2-92b7-fdf68cf94bdc.png" width="270" height="600">
+<img src="https://user-images.githubusercontent.com/92873911/164436029-7c05913b-670c-4b42-9767-2256b7f72a69.png" width="270" height="600">
+![Simulator Screen Shot - iPhone 11 Pro - 2022-04-21 at 13 08 36](https://user-images.githubusercontent.com/92873911/164435759-e673440f-7c29-49ab-b251-403100d36082.png)
+![Simulator Screen Shot - iPhone 11 Pro - 2022-04-21 at 13 08 17](https://user-images.githubusercontent.com/92873911/164435949-d4a6f6d1-4f1b-43c2-92b7-fdf68cf94bdc.png)
+![Simulator Screen Shot - iPhone 11 Pro - 2022-04-21 at 13 08 49](https://user-images.githubusercontent.com/92873911/164436029-7c05913b-670c-4b42-9767-2256b7f72a69.png)
