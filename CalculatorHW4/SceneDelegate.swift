@@ -18,14 +18,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene as! UIWindowScene)
-        let firstViewController = ViewController()
+        let firstViewController = CalculatorViewController()
         let secondViewController = SecondViewController()
         let navigationController = UINavigationController(rootViewController: secondViewController)
         
         let tabBarController = UITabBarController()
         tabBarController.setViewControllers([firstViewController, navigationController], animated: true)
-        navigationController.title = "Calculator"
-        secondViewController.title = "Answers"
+        firstViewController.title = "Calculator"
+        navigationController.title = "Answers"
         
         tabBarController.tabBar.tintColor = .purple
 
@@ -34,7 +34,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let images = ["keyboard", "list.bullet.rectangle.portrait"]
 
         for i in 0..<items.count {
-            
             items[i].image = UIImage(systemName: images[i])
         }
         window?.rootViewController = tabBarController

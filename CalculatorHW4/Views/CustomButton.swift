@@ -11,6 +11,20 @@ import UIKit
 
 class CustomButton: UIButton {
     
+    enum ButtonColor {
+        case purple
+        case offWhite
+        
+        func getColor() -> CGColor {
+            switch self {
+            case .purple:
+                return UIColor.customPurple.cgColor
+            case .offWhite:
+                return UIColor.offWhite.cgColor
+            }
+        }
+    }
+    
     let darkShadow = CALayer()
     let lightShadow = CALayer()
     let strokeGray = CALayer()
@@ -38,14 +52,13 @@ class CustomButton: UIButton {
         addStroke()
     }
     
-    func setShadowsAndColor(color: UIColor) {
-        print("setNew shadows")
+    func setShadowsAndColor(color: ButtonColor) {
         setShadow(layer: darkShadow, isBlack: true)
         setShadow(layer: lightShadow, isBlack: false)
         
         func setShadow(layer: CALayer, isBlack: Bool) {
             layer.cornerRadius = 15
-            layer.backgroundColor = color.cgColor
+            layer.backgroundColor = color.getColor()
             layer.shadowOpacity = 1
             layer.shadowRadius = 15
             layer.shouldRasterize = true

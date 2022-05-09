@@ -20,6 +20,9 @@ class AnswersTableViewController: UIViewController {
         view.backgroundColor = .offWhite
         setTableView()
         navigationController?.navigationBar.tintColor = .gray
+        navigationController?.navigationBar.backgroundColor = .offWhite
+        navigationController?.navigationBar.barTintColor = .offWhite
+        tabBarController?.tabBar.barTintColor = .offWhite
     }
     
     private func setTableView() {

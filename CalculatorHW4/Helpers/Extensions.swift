@@ -34,58 +34,6 @@ extension UIScreen {
     }
 }
 
-extension UIStackView {
-    func setStackView(viewArray: [UIView], axisHorizontal: Bool ) {
-        for view in viewArray{
-            self.addArrangedSubview(view)
-        }
-        self.axis = axisHorizontal ? .horizontal : .vertical
-        self.alignment = .center
-    }
-}
-
-extension Array where Element: CustomButton {
-    func setShadowsAndColor(color: UIColor) {
-        forEach { element in
-            element.setShadowsAndColor(color: color)
-        }
-    }
-    func setButtonLabelSizeToArray(labelSize: CGFloat) {
-        forEach { element in
-            element.titleLabel?.font = UIFont.systemFont(ofSize: labelSize)
-        }
-    }
-    func setCustomButtonsInArray(firstSelector: Selector, secondSelector: Selector) {
-        forEach { element in
-            let allButtonTextSize: CGFloat = 30
-            element.setTitleColor(.gray, for: .normal)
-            element.addTarget(firstSelector, action: firstSelector, for: .touchDown)
-            element.addTarget(secondSelector, action: secondSelector, for: [.touchUpInside, .touchUpOutside])
-            element.titleLabel?.font = UIFont.systemFont(ofSize:  allButtonTextSize)
-        }
-    }
-}
-
-extension UILabel {
-    func setLabel(numberOfLines: Int, text: String) {
-        self.textAlignment = .right
-        self.textColor = .gray
-        self.minimumScaleFactor = 0.7
-        self.adjustsFontSizeToFitWidth = true
-        self.sizeToFit()
-        self.numberOfLines = numberOfLines
-        self.text = text
-    }
-}
-
-extension Array where Element: UIStackView {
-    func setSpacingToArray(spacing: CGFloat) {
-        forEach { element in
-            element.spacing = spacing
-        }
-    }
-}
-
 extension UIView {
     func pin(to superView: UIView) {
         translatesAutoresizingMaskIntoConstraints = false
