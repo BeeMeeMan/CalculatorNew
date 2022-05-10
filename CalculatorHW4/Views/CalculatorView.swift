@@ -8,7 +8,7 @@
 import UIKit
 
 class CalculatorView: UIView {
-    private let calculatorViewModel = CalculatorViewModel()
+    private let viewModel = ViewModel()
     private var allButtons: [UIButton] = []
     private var inputLabel: UILabel = UILabel()
     private var answerLabel: UILabel = UILabel()
@@ -45,15 +45,15 @@ class CalculatorView: UIView {
         if let index = canselButtonIndex { allButtons[index].setTitle("AC", for: .normal) }
         for button in allButtons { button.removeFromSuperview() }
         
-        let spacer = calculatorViewModel.spacer
+        let spacer = viewModel.spacer
         let isInPortrait = screenOrientation == .portrait
         let window = UIApplication.shared.windows.first
         let bottomPadding: CGFloat = window?.safeAreaInsets.bottom ?? .zero
-        let currentStruct: [[String]] = calculatorViewModel.getButtonsStruct(basedOn: screenOrientation)
-        let buttonHeight = calculatorViewModel.getButtonsHeight(basedOn: screenOrientation)
-        let buttonWidth = calculatorViewModel.getButtonsWidth(basedOn: screenOrientation)
-        let xOffset: CGFloat = calculatorViewModel.getXOffset(basedOn: screenOrientation)
-        let yOffset: CGFloat = calculatorViewModel.getYOffset(basedOn: screenOrientation, bottomPadding: bottomPadding)
+        let currentStruct: [[String]] = viewModel.getButtonsStruct(basedOn: screenOrientation)
+        let buttonHeight = viewModel.getButtonsHeight(basedOn: screenOrientation)
+        let buttonWidth = viewModel.getButtonsWidth(basedOn: screenOrientation)
+        let xOffset: CGFloat = viewModel.getXOffset(basedOn: screenOrientation)
+        let yOffset: CGFloat = viewModel.getYOffset(basedOn: screenOrientation, bottomPadding: bottomPadding)
         
         let bigButtonModule: CGFloat = buttonWidth + spacer
         var stackCount: CGFloat = 0
@@ -64,7 +64,7 @@ class CalculatorView: UIView {
         for row in currentStruct {
             for buttonName in row {
                 if let i = allButtons.firstIndex(where: { $0.currentTitle == buttonName }) {
-                    bigButtonMultiplier = calculatorViewModel.bigButtonsName.contains(buttonName) ? 1 : 0
+                    bigButtonMultiplier = viewModel.bigButtonsName.contains(buttonName) ? 1 : 0
                     
                     frame = CGRect(x: xOffset + (stackCount + bigButtonSpacerMultiplier) * (buttonWidth + spacer),
                                    y: yOffset + rowCount * (buttonHeight + spacer),
@@ -72,7 +72,7 @@ class CalculatorView: UIView {
                                    height: buttonHeight)
                     
                     allButtons[i].frame = frame
-                    allButtons[i].titleLabel?.font = calculatorViewModel.setButtonFont(basedOn: screenOrientation)
+                    allButtons[i].titleLabel?.font = viewModel.setButtonFont(basedOn: screenOrientation)
                     self.addSubview(allButtons[i])
                 }
                 stackCount += 1
@@ -113,7 +113,7 @@ class CalculatorView: UIView {
     func getInputLabelText() -> String? { inputLabel.text }
     func setAnswerLabel(text: String) { answerLabel.text = text }
     func getAnswerLabelText() -> String? { answerLabel.text }
-    func getClearButtonNames() -> [String] { calculatorViewModel.clearButtonNames }
+    func getClearButtonNames() -> [String] { viewModel.clearButtonNames }
     
     // MARK: - Helpers methods:
     private func createSubviews() {
@@ -130,9 +130,9 @@ class CalculatorView: UIView {
     }
     
     private func createButtons() {
-        for name in calculatorViewModel.allButtonsName {
+        for name in viewModel.allButtonsName {
             let button = CustomButton(buttonTitle: name)
-            button.setShadowsAndColor(color: calculatorViewModel.colorButtonsName.contains(name) ? .purple : .offWhite)
+            button.setShadowsAndColor(color: viewModel.colorButtonsName.contains(name) ? .purple : .offWhite)
             button.setTitleColor(.gray, for: .normal)
             button.titleLabel?.font = UIFont.systemFont(ofSize:  30)
             allButtons.append(button)
