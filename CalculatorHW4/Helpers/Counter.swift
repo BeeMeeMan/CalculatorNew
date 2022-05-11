@@ -11,12 +11,9 @@ class Counter {
     
     let formula: String
     
-    init(formula: String) {
-        self.formula = formula
-    }
+    init(formula: String) { self.formula = formula }
     
     func count() -> Double {
-        
         func mathStringToArray() -> [String] {
             
             // Adding split operators:
@@ -106,7 +103,6 @@ class Counter {
             
             // Add calculation logics:
             func stackCalculation(ForInLoop element: String) {
-                
                 // Take two last numbers from numberStack and make math operation with them, according to the last operator in the stack. Then switch two last number from the stackby new result, and add current operator in the stack:
                 let answer = operation()
                 numberStack = numberStack.dropLast(2)
@@ -118,7 +114,7 @@ class Counter {
             for element in formula {
                 
                 // If element number, add it to numberStack:
-                if !priorityDict.keys.contains(element){
+                if !priorityDict.keys.contains(element) {
                     numberStack.append(Double(element)!)
                     
                     // If element "(", add it to operatorStack:
@@ -135,7 +131,7 @@ class Counter {
                     operatorStack = operatorStack.dropLast()
                     
                     // If operatorStack isempty or priority of new operator element is greater then stack last elemet, then just add it to operatorStack:
-                } else if operatorStack.isEmpty || priorityDict[operatorStack.last!]!  < priorityDict[element]!{
+                } else if operatorStack.isEmpty || priorityDict[operatorStack.last!]! < priorityDict[element]!{
                     operatorStack.append(element)
                     
                     // If new operator element priority is less then stack last elemet, then we take two last numbers from numberStack and make math operation with them, according to the last operator in the stack. Then switch two last number from the stackby new result, and add current operator in the stack:
@@ -157,7 +153,6 @@ class Counter {
             }
             return numberStack.first!
         }
-        
         return arrayCalculation(mathStringToArray())
     }
 }

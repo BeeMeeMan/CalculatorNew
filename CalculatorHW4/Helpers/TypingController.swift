@@ -22,7 +22,6 @@ class TypingController {
     }
     
     func runControll() -> (input: String, answer: String){
-        
         var input = text
         var answer = lastAnswer
         let operators = ["+", "-", "*", "/", "^", "(" ]
@@ -48,14 +47,12 @@ class TypingController {
         case "C":
             cancelTyping()
         default: break
-            
         }
         
         // MARK: - Mathematics Methods
         
         func BracketTyping(current symbol: String, typed text: String, last char: String) {
             if symbol == ")"{
-                
                 if symbol == ")" && unclosedBracketsNum(text) > 0 && !operators.contains(char) {
                     addTypingSymbol(symbol)
                 }
@@ -68,9 +65,7 @@ class TypingController {
             } else if operators.contains(char) &&  symbol != ")" {
                 addTypingSymbol(symbol)
                 
-            } else {
-                return
-            }
+            } else { return }
             clearAnswer()
         }
         
@@ -79,9 +74,7 @@ class TypingController {
                 addTypingSymbol("0\(symbol)")
             } else if !isDot(text) {
                 addTypingSymbol(symbol)
-            } else {
-                return
-            }
+            } else { return }
             
             func isDot(_ text: String) -> Bool {
                 var result = false
@@ -91,7 +84,6 @@ class TypingController {
                     if String(i) == "." {
                         result = true
                         break
-                        
                     } else if operators.contains(String(i)) {
                         result = false
                         break
@@ -102,18 +94,13 @@ class TypingController {
         }
         
         func numberTyping(current symbol: String, typed text: String, last char: String) {
-            
             if text == "0" {
                 clearTextTyping()
                 addTypingSymbol(symbol)
                 
             } else if char != ")" {
                 addTypingSymbol(symbol)
-                
-            } else {
-                
-                return
-            }
+            } else { return }
         }
         
         func operatorsTyping(current symbol: String, typed text: String, last char: String) {
@@ -123,19 +110,13 @@ class TypingController {
                 if text == "0" && char == "-" {
                     clearTextTyping()
                     addTypingSymbol(symbol)
-                    
-                } else {
-                    addTypingSymbol(symbol)
-                }
+                } else { addTypingSymbol(symbol) }
             } else if char == "(" && symbol == "-" {
                 addTypingSymbol(symbol)
-            } else {
-                return
-            }
+            } else { return }
         }
         
         func backSpaceTyping(current symbol: String, typed text: String, last char: String) {
-            
             if text.count == 1 {
                 input = "0"
             } else {
@@ -146,10 +127,7 @@ class TypingController {
         func equalTyping(current symbol: String, typed text: String, last char: String) {
             let operators = operators + ["."]
             
-            if operators.contains(char) {
-                input.removeLast()
-            }
-            
+            if operators.contains(char) { input.removeLast() }
             for _ in 0..<unclosedBracketsNum(text) {
                 addTypingSymbol(")")
             }
@@ -172,24 +150,11 @@ class TypingController {
             return result
         }
         
-        func cancelTyping() {
-            input = "0"
-          //  clearAnswer()
-        }
-        
-        func clearAnswer() {
-            answer = ""
-        }
-        
-        func addTypingSymbol(_ string: String) {
-            input += string
-        }
-        
-        func clearTextTyping() {
-            input = ""
-        }
+        func cancelTyping() { input = "0" }
+        func clearAnswer() { answer = "" }
+        func addTypingSymbol(_ string: String) { input += string }
+        func clearTextTyping() { input = "" }
         
         return (input, answer)
     }
 }
-
